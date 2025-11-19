@@ -338,7 +338,11 @@ export default function PrizeConfigPage() {
               style={{ width: '100%' }}
               placeholder="Masukkan nominal hadiah"
               formatter={(value) => `Rp ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
-              parser={(value) => value!.replace(/Rp\s?|(\.*)/g, '')}
+              parser={((value) => {
+                const cleaned = (value || '').replace(/Rp\s?|(\.*)/g, '');
+                const parsed = parseFloat(cleaned);
+                return isNaN(parsed) ? 0 : parsed;
+              }) as (value: string | undefined) => number}
               min={0}
               step={1000}
             />
@@ -394,19 +398,19 @@ export default function PrizeConfigPage() {
                       <strong>Jumlah Box:</strong>{' '}
                       {Math.floor(
                         form.getFieldValue('total_coupons') /
-                          form.getFieldValue('coupons_per_box')
+                        form.getFieldValue('coupons_per_box')
                       )}{' '}
                       box
                       {form.getFieldValue('total_coupons') %
                         form.getFieldValue('coupons_per_box') !==
                         0 && (
-                        <span style={{ color: '#ff4d4f', marginLeft: '0.5rem' }}>
-                          (Sisa:{' '}
-                          {form.getFieldValue('total_coupons') %
-                            form.getFieldValue('coupons_per_box')}
-                          )
-                        </span>
-                      )}
+                          <span style={{ color: '#ff4d4f', marginLeft: '0.5rem' }}>
+                            (Sisa:{' '}
+                            {form.getFieldValue('total_coupons') %
+                              form.getFieldValue('coupons_per_box')}
+                            )
+                          </span>
+                        )}
                     </div>
                   )}
               </div>

@@ -28,7 +28,7 @@ import {
 import Link from 'next/link';
 import { useQuery } from '@tanstack/react-query';
 import { batchesApi } from '@/lib/api/batches';
-import { Batch } from '@/types';
+import { Batch, BatchDetail } from '@/types';
 import type { ColumnsType } from 'antd/es/table';
 import dayjs from 'dayjs';
 
@@ -330,28 +330,28 @@ export default function BatchesPage() {
           <div>
             <Descriptions title="Informasi Batch" bordered column={2} style={{ marginBottom: '1.5rem' }}>
               <Descriptions.Item label="No Batch">
-                #{batchDetail.batch.batch_number}
+                #{batchDetail.batch_number}
               </Descriptions.Item>
               <Descriptions.Item label="Status">
-                {getStatusTag(batchDetail.batch.status)}
+                {getStatusTag(batchDetail.status)}
               </Descriptions.Item>
               <Descriptions.Item label="Operator">
-                {batchDetail.batch.operator_name}
+                {batchDetail.operator_name}
               </Descriptions.Item>
               <Descriptions.Item label="Lokasi">
-                {batchDetail.batch.location}
+                {batchDetail.location}
               </Descriptions.Item>
               <Descriptions.Item label="Tanggal Produksi">
-                {dayjs(batchDetail.batch.production_date).format('DD-MM-YYYY HH:mm:ss')}
+                {dayjs(batchDetail.production_date).format('DD-MM-YYYY HH:mm:ss')}
               </Descriptions.Item>
               <Descriptions.Item label="Total Box">
-                {batchDetail.batch.total_boxes}
+                {batchDetail.total_boxes}
               </Descriptions.Item>
               <Descriptions.Item label="Dibuat Oleh">
-                {batchDetail.batch.created_by_name || '-'}
+                {batchDetail.created_by_name || '-'}
               </Descriptions.Item>
               <Descriptions.Item label="Operator ID">
-                {batchDetail.batch.operator_name_full || '-'}
+                {batchDetail.operator_name_full || '-'}
               </Descriptions.Item>
             </Descriptions>
 
