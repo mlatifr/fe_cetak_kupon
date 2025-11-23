@@ -144,7 +144,6 @@ export default function PrizeConfigPage() {
     (sum, c) => sum + c.prize_amount * c.total_coupons,
     0
   );
-  const totalWinners = activeConfigs.reduce((sum, c) => sum + c.total_coupons, 0);
 
   const columns: ColumnsType<PrizeConfig> = [
     {
@@ -283,15 +282,6 @@ export default function PrizeConfigPage() {
                 }
                 return value;
               }}
-            />
-          </Card>
-        </Col>
-        <Col xs={24} sm={12} lg={6}>
-          <Card>
-            <Statistic
-              title="Total Pemenang"
-              value={totalWinners}
-              valueStyle={{ color: '#722ed1' }}
             />
           </Card>
         </Col>
