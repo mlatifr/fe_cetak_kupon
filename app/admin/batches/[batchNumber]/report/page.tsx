@@ -39,8 +39,8 @@ export default function BatchReportPage() {
   // Format date sesuai soal: "01-Jan-1901 / 14:00"
   const formatDate = (date: string) => {
     const d = dayjs(date);
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
-                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     const day = String(d.date()).padStart(2, '0');
     const month = months[d.month()];
     const year = d.year();
@@ -212,13 +212,6 @@ export default function BatchReportPage() {
           scroll={{ x: 'max-content' }}
           size="small"
         />
-
-        {/* Footer info */}
-        <div style={{ marginTop: '1rem', textAlign: 'center' }}>
-          <Text type="secondary" italic>
-            ... dan seterusnya ...
-          </Text>
-        </div>
       </Card>
 
       {/* Print styles */}
